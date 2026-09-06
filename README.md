@@ -25,7 +25,7 @@
 ___
 
 
-[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-0078FC?style=for-the-badge&logo=github)](https://is-leeroy-jenkins.github.io/Buddy/)
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-0078FC?style=for-the-badge&logo=github)](https://is-leeroy-jenkins.github.io/buddy/)
 
 Budget Buddy is an federal financial management AI tool designed to support fderal budget/financial
 analysts, managers, and policy professionals. It integrates large language models (LLMs) such as
