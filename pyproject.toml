@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "buddy-py"
+version = "0.1.0"
+description = "Financial management Streamlit assistant with provider chat, retrieval, and document analysis"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+authors = [{name = "Terry Eppler"}]
+license = "MIT"
+license-files = ["LICENSE.txt"]
+dynamic = ["dependencies"]
+
+[project.urls]
+Homepage = "https://github.com/is-leeroy-jenkins/buddy"
+Documentation = "https://is-leeroy-jenkins.github.io/buddy/"
+Issues = "https://github.com/is-leeroy-jenkins/buddy/issues"
+
+[project.scripts]
+buddy = "buddy.cli:desktop"
+buddy-browser = "buddy.cli:main"
+
+[tool.setuptools]
+packages = ["buddy", "buddy.boogr"]
+package-dir = {buddy = "."}
+include-package-data = false
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements-runtime.txt"]}
+
+[tool.setuptools.package-data]
+buddy = ["resources/**/*.png", "resources/**/*.ico", ".streamlit/config.toml"]
+
+"buddy.boogr" = ["*.ico", "resources/**/*"]

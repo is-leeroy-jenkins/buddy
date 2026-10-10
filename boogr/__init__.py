@@ -50,7 +50,10 @@ from typing import List, Tuple, Optional
 import re
 from datetime import datetime, timedelta
 from pathlib import Path
-import config as cfg
+if __package__ == 'buddy.boogr':
+	from .. import config as cfg
+else:
+	import config as cfg
 import sqlite3
 
 def get_config_bool( name: str, default: bool = False ) -> bool:

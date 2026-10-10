@@ -1,0 +1,2 @@
+-r requirements-runtime.txt
+pyinstaller>=6.0; sys_platform == "win32"
