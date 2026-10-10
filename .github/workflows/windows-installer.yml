@@ -1,0 +1,43 @@
+name: Build Buddy Windows desktop installer
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-windows:
+    runs-on: windows-2022
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install application and packaging requirements
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -r requirements-desktop.txt
+      - name: Validate launcher and configuration
+        shell: pwsh
+        run: |
+          python -m py_compile desktop.py config.py app.py
+      - name: Build Buddy executable directory
+        shell: pwsh
+        run: python -m PyInstaller --noconfirm --clean buddy.spec
+      - name: Install Inno Setup
+        shell: pwsh
+        run: choco install innosetup --no-progress -y
+      - name: Build Windows installer
+        shell: pwsh
+        run: |
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" "installer\buddy.iss"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Upload installers
+        uses: actions/upload-artifact@v4
+        with:
+          name: Buddy-Windows-Installer
+          path: dist-installer/*.exe
+          if-no-files-found: error
