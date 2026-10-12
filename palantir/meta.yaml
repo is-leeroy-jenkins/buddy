@@ -1,0 +1,95 @@
+package:
+  name: '{{ PACKAGE_NAME }}'
+  version: '{{ PACKAGE_VERSION }}'
+
+source:
+  path: ../src
+
+requirements:
+  run:
+    # Foundry Jupyter Workspace
+    - python 3.13.*
+    - ipykernel
+    - pip
+    - foundry-transforms-lib-python
+    - pandas
+    - streamlit
+
+    # Hosted AI / Google Cloud
+    - google-genai
+    - google-cloud-storage
+    - openai
+    - httpx>=0.28.1
+    - requests==2.32.4
+    - tiktoken
+
+    # Embeddings / language models
+    # Source: sentence-transformers==2.7.0
+    - sentence-transformers==5.1.2
+    # Source: transformers==4.41.2
+    - transformers>=4.41,<5
+    # Source: huggingface_hub==0.23.5
+    - huggingface_hub>=0.34,<1
+    # Source: torch==2.4.1
+    - pytorch>=2.4,<2.7
+    # Source: torchvision==0.19.1
+    - torchvision
+
+    # Numerical / scientific computing
+    # Source: numpy==1.26.4
+    - numpy>=2,<3
+    # Source: scikit-learn==1.5.1, scipy==1.13.1
+    - scikit-learn
+    - scipy
+    # Source: safetensors==0.4.3
+    - safetensors
+    # Source: sentencepiece==0.2.0
+    - sentencepiece
+
+    # Document processing / reporting
+    - openpyxl
+    - python-docx
+    - pymupdf
+    - reportlab>=4.0.8
+    - pillow>=10.0.0
+    - tabulate>=0.9.0
+    - pydantic>=2.7,<2.10
+    - typing_extensions>=4.11,<5
+    - python-dotenv
+
+    # Visualization
+    - plotly==6.3.0
+    - streamlit-pdf
+
+    # Utility packages
+    # Source: regex==2024.5.15
+    - regex
+    # Source: tqdm==4.66.4
+    - tqdm
+    # Source: filelock==3.15.4
+    - filelock
+    # Source: fsspec==2024.6.1
+    - fsspec
+    - packaging>=25,<26
+    # Source: pyyaml==6.0.1
+    - pyyaml
+
+    # Documentation / development
+    - mkdocs
+    - mkdocs-material
+    # Source: mkdocstrings[python]
+    - mkdocstrings
+    - mkdocstrings-python
+    - mkdocs-autorefs
+    - pymdown-extensions
+    - black
+
+    # Original requirements awaiting verification
+    # - matplot
+    # - streamlit-extras
+    # - streamlit-pdf
+    # - xai-sdk
+
+    # Foundry baseline exclusion
+    # - python_sdk
+
